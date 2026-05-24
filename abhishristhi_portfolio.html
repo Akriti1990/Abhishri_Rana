@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abhishristhi Rana — Clinical Optometrist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --forest: #0b3d2e;
+    --forest-mid: #145c44;
+    --forest-light: #1e7a5a;
+    --sage: #a8c5b5;
+    --cream: #f5f0e8;
+    --warm-white: #faf8f3;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --text-dark: #1a1a18;
+    --text-mid: #4a5550;
+    --text-soft: #7a8c84;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(245, 240, 232, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(11, 61, 46, 0.1);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--forest);
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-mid);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--forest); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--forest);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem 5rem;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: -60px;
+    width: 120px;
+    background: var(--forest);
+    clip-path: polygon(0 0, 50% 0, 100% 100%, 0 100%);
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-title {
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 2rem;
+  }
+
+  .hero-bio {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    max-width: 340px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    transition: background 0.2s, transform 0.2s;
+    width: fit-content;
+  }
+
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .hero-right {
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+  }
+
+  .hero-portrait {
+    position: relative;
+    z-index: 2;
+  }
+
+  .portrait-frame {
+    width: 320px; height: 400px;
+    background: var(--forest-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portrait-frame::before {
+    content: 'AR';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 100px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.15);
+  }
+
+  /* When a real image is placed inside the frame make it cover the area */
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+  }
+
+  /* Prefer using :has to hide the initials when the frame contains an image (modern browsers).
+     Also provide a class-based fallback that will be set by JS for broader support. */
+  .portrait-frame:has(img)::before {
+    display: none;
+  }
+
+  .portrait-frame.has-img::before { display: none; }
+
+  .portrait-deco {
+    position: absolute;
+    bottom: -16px; right: -16px;
+    width: 320px; height: 400px;
+    border: 1.5px solid var(--gold);
+    pointer-events: none;
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 3rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--forest);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-top: 4px;
+  }
+
+  /* ─── SECTION SHELL ─── */
+  section {
+    padding: 6rem 5rem;
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    color: var(--forest);
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--forest-light);
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--forest);
+    padding: 6rem 5rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-left .section-eyebrow { color: var(--gold); }
+
+  .about-left .section-title {
+    color: #fff;
+  }
+
+  .about-left .section-title em { color: var(--gold-light); }
+
+  .about-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .highlight-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .highlight-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .about-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .about-card {
+    background: rgba(255,255,255,0.04);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .about-card:hover { background: rgba(255,255,255,0.08); }
+
+  .about-card-icon {
+    font-size: 28px;
+    margin-bottom: 1rem;
+  }
+
+  .about-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-card-desc {
+    font-size: 12px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience {
+    background: var(--warm-white);
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(11,61,46,0.08);
+  }
+
+  .exp-card {
+    background: var(--warm-white);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .exp-card:hover { background: var(--cream); }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--gold);
+    transition: height 0.4s ease;
+  }
+
+  .exp-card:hover::before { height: 100%; }
+
+  .exp-period {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 1rem;
+  }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+  }
+
+  .exp-org {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--forest-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .exp-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .exp-list li {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-mid);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .exp-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+    top: 2px;
+  }
+
+  /* ─── SERVICES / SPECIALTIES ─── */
+  #services {
+    background: var(--cream);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--warm-white);
+    padding: 2.5rem 2rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+
+  .service-card:hover {
+    border-bottom-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(11,61,46,0.08);
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    line-height: 1;
+  }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-icon svg {
+    width: 100%; height: 100%;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-soft);
+  }
+
+  /* ─── OUTREACH ─── */
+  #outreach {
+    background: var(--forest);
+    padding: 6rem 5rem;
+  }
+
+  .outreach-inner .section-eyebrow { color: var(--gold); }
+  .outreach-inner .section-title { color: #fff; }
+  .outreach-inner .section-title em { color: var(--gold-light); }
+
+  .outreach-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 3rem;
+  }
+
+  .outreach-item {
+    background: rgba(255,255,255,0.03);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .outreach-item:hover { background: rgba(255,255,255,0.07); }
+
+  .outreach-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .outreach-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills {
+    background: var(--warm-white);
+  }
+
+  .skills-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .skill-group-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(11,61,46,0.1);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skill-name {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .skill-bar-track {
+    height: 2px;
+    background: rgba(11,61,46,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    background: var(--gold);
+    transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 0;
+  }
+
+  .skill-bar-fill.animated {
+    /* width set by JS */
+  }
+
+  .lang-tags {
+    display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem;
+  }
+
+  .lang-tag {
+    border: 1px solid rgba(11,61,46,0.2);
+    padding: 6px 18px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--forest);
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--cream);
+    padding: 6rem 5rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-left .section-title { margin-bottom: 1.5rem; }
+
+  .contact-intro {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-mid);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+
+  .contact-icon {
+    width: 36px; height: 36px;
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg {
+    width: 16px; height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-field label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  .form-field input,
+  .form-field textarea {
+    background: var(--warm-white);
+    border: 1px solid rgba(11,61,46,0.15);
+    padding: 12px 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: var(--forest);
+  }
+
+  .submit-btn {
+    background: var(--forest);
+    color: var(--gold);
+    border: none;
+    padding: 14px 36px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+
+  .submit-btn:hover { background: var(--forest-mid); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--text-dark);
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-note {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+  .delay-5 { animation-delay: 0.7s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 7rem 2rem 3rem; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 3rem 2rem; }
+    .portrait-frame { width: 240px; height: 300px; }
+    .portrait-deco { width: 240px; height: 300px; }
+    .hero-stats { position: static; transform: none; margin-top: 2rem; justify-content: center; }
+
+    section { padding: 4rem 2rem; }
+    #about, #outreach, #contact { padding: 4rem 2rem; }
+
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-card-grid { grid-template-columns: 1fr; }
+    .exp-grid, .services-grid, .outreach-strip { grid-template-columns: 1fr; }
+    .skills-columns { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Abhishristhi Rana</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#services">Specialties</a></li>
+    <li><a href="#outreach">Outreach</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow fade-up delay-1">Clinical Optometrist · Meerut, India</p>
+    <h1 class="hero-name fade-up delay-2">Abhish<em>risthi</em><br>Rana</h1>
+    <p class="hero-title fade-up delay-3">B.Optom · Galgotias University</p>
+    <p class="hero-bio fade-up delay-4">
+      Bringing clarity to lives through precise eye care, advanced diagnostics, and compassionate patient-centred service.
+    </p>
+    <a href="#contact" class="hero-cta fade-up delay-5">
+      <span>Get In Touch</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <img src="./Didi_photo.jpg" alt="Abhishristhi Rana" loading="lazy"/>
+      </div>
+      <div class="portrait-deco"></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Practice</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Clinics</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Community Impact</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <p class="section-eyebrow">Who I Am</p>
+      <h2 class="section-title">Vision care with <em>heart & precision</em></h2>
+      <p class="about-text">
+        A Clinical Optometrist with hands-on experience in tertiary eye care, patient management, and ophthalmic diagnostic technologies. My journey spans from LASIK surgical support at one of Delhi's leading hospitals to building lasting patient relationships in community practice.
+      </p>
+      <p class="about-text">
+        I aim to grow into Clinical Applications — bridging my clinical expertise with medical device technologies and healthcare innovation.
+      </p>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Comprehensive refraction and ocular health assessments</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">LASIK pre-operative screening and post-operative care</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Ophthalmic diagnostic instrument proficiency</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Community outreach and vision education programs</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-card-grid">
+      <div class="about-card">
+        <div class="about-card-icon">👁️</div>
+        <div class="about-card-title">Clinical Excellence</div>
+        <div class="about-card-desc">Comprehensive eye examinations, refraction tests, and accurate prescription analysis for all age groups.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🔬</div>
+        <div class="about-card-title">Diagnostics</div>
+        <div class="about-card-desc">Skilled in operating ophthalmic diagnostic instruments with accuracy and clinical precision.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🤝</div>
+        <div class="about-card-title">Patient Care</div>
+        <div class="about-card-desc">Building trust through clear communication, counseling, and education on ocular health.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">💡</div>
+        <div class="about-card-title">Innovation</div>
+        <div class="about-card-desc">Passionate about applying clinical knowledge to medical device applications and healthcare technology.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <p class="section-eyebrow">Career Journey</p>
+    <h2 class="section-title">Where I've <em>grown</em></h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <p class="exp-period">Aug 2022 — Present</p>
+      <h3 class="exp-role">Optometrist</h3>
+      <p class="exp-org">Drishti Eye Foundation · Meerut, UP</p>
+      <ul class="exp-list">
+        <li>Comprehensive eye examinations, refraction, and patient consultations in clinical practice</li>
+        <li>Ophthalmic diagnostic instrument operation and clinical workflow management</li>
+        <li>Patient education on vision care, treatment procedures, and ocular health management</li>
+        <li>Built clinical communication skills through coordination with patients and healthcare professionals</li>
+        <li>Gained practical exposure to ophthalmic technologies and patient-centred clinical applications</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <p class="exp-period">July 2021 — July 2022</p>
+      <h3 class="exp-role">Optometry Intern</h3>
+      <p class="exp-org">Eye7 Hospital · Lajpat Nagar, New Delhi</p>
+      <ul class="exp-list">
+        <li>Conducted comprehensive eye examinations under tertiary-level clinical supervision</li>
+        <li>Assisted in LASIK surgery procedures with exposure to pre-operative and post-operative care</li>
+        <li>Counseled patients on eyeglass prescriptions and ocular health education</li>
+        <li>Worked within a high-volume, multi-specialty ophthalmic hospital environment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / SPECIALTIES -->
+<section id="services">
+  <div class="section-header">
+    <p class="section-eyebrow">What I Offer</p>
+    <h2 class="section-title">Clinical <em>specialties</em></h2>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#0b3d2e" stroke-width="1.5" stroke-linecap="round">
+          <ellipse cx="24" cy="24" rx="20" ry="12"/>
+          <circle cx="24" cy="24" r="6" stroke="#c9a84c"/>
+          <circle cx="24" cy="24" r="2" fill="#0b3d2e"/>
+        </svg>
+      </div>
+      <p class="service-name">Eye Examination</p>
+      <p class="service-desc">Complete visual acuity, refraction, and ocular health assessments tailored to each patient's needs.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#0b3d2e" stroke-width="1.5" stroke-linecap="round">
+          <rect x="8" y="14" width="32" height="22" rx="3"/>
+          <line x1="24" y1="14" x2="24" y2="36" stroke="#c9a84c"/>
+          <circle cx="24" cy="25" r="5"/>
+        </svg>
+      </div>
+      <p class="service-name">LASIK Support</p>
+      <p class="service-desc">Pre-operative candidate screening and post-operative monitoring for refractive surgery patients.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#0b3d2e" stroke-width="1.5" stroke-linecap="round">
+          <path d="M24 8 C14 8 8 20 8 24 C8 28 14 40 24 40 C34 40 40 28 40 24 C40 20 34 8 24 8Z"/>
+          <path d="M16 24 L22 30 L32 18" stroke="#c9a84c" stroke-width="2"/>
+        </svg>
+      </div>
+      <p class="service-name">Patient Counseling</p>
+      <p class="service-desc">Clear, compassionate education on diagnoses, prescriptions, and long-term vision care management.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#0b3d2e" stroke-width="1.5" stroke-linecap="round">
+          <rect x="12" y="8" width="24" height="18" rx="2"/>
+          <line x1="24" y1="26" x2="24" y2="36"/>
+          <line x1="16" y1="36" x2="32" y2="36"/>
+          <circle cx="24" cy="17" r="4" stroke="#c9a84c"/>
+        </svg>
+      </div>
+      <p class="service-name">Diagnostic Instruments</p>
+      <p class="service-desc">Proficient in slit-lamp biomicroscopy, autorefractors, tonometry, and ophthalmic imaging equipment.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#0b3d2e" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="24" cy="18" r="8"/>
+          <path d="M10 40 C10 32 38 32 38 40"/>
+          <line x1="32" y1="10" x2="40" y2="6" stroke="#c9a84c"/>
+          <line x1="40" y1="6" x2="44" y2="10"/>
+        </svg>
+      </div>
+      <p class="service-name">Clinical Applications</p>
+      <p class="service-desc">Bridging clinical expertise with medical device technologies for training and healthcare support roles.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#0b3d2e" stroke-width="1.5" stroke-linecap="round">
+          <path d="M24 6 L28 18 L40 18 L30 26 L34 38 L24 30 L14 38 L18 26 L8 18 L20 18 Z" stroke="#c9a84c"/>
+        </svg>
+      </div>
+      <p class="service-name">Healthcare Coordination</p>
+      <p class="service-desc">Seamless coordination between patients, physicians, and clinical teams for integrated eye health outcomes.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- OUTREACH -->
+<section id="outreach">
+  <div class="outreach-inner">
+    <p class="section-eyebrow">Giving Back</p>
+    <h2 class="section-title">Community <em>outreach</em></h2>
+    <p style="font-size:14px; color:rgba(255,255,255,0.5); margin-top:1rem; max-width:560px; line-height:1.8;">
+      Beyond the clinic, I believe quality eye care should reach every corner of society — from school playgrounds to construction sites, from elderly communities to children with special needs.
+    </p>
+    <div class="outreach-strip">
+      <div class="outreach-item">
+        <div class="outreach-num">🏫</div>
+        <div class="outreach-label">School children<br>eye camps</div>
+      </div>
+      <div class="outreach-item">
+        <div class="outreach-num">👷</div>
+        <div class="outreach-label">Construction<br>workers outreach</div>
+      </div>
+      <div class="outreach-item">
+        <div class="outreach-num">👴</div>
+        <div class="outreach-label">Geriatric<br>vision care</div>
+      </div>
+      <div class="outreach-item">
+        <div class="outreach-num">🌟</div>
+        <div class="outreach-label">Special needs<br>children</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <p class="section-eyebrow">Competencies</p>
+    <h2 class="section-title">Skills &amp; <em>expertise</em></h2>
+  </div>
+  <div class="skills-columns">
+    <div>
+      <p class="skill-group-title">Clinical Skills</p>
+      <div class="skill-list" id="clinical-skills">
+        <div class="skill-item">
+          <span class="skill-name">Refraction &amp; Eye Exams <span>95%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">LASIK Pre/Post-op Care <span>85%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Ophthalmic Instruments <span>90%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Patient Counseling <span>92%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Clinical Documentation <span>88%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="skill-group-title">Professional Skills</p>
+      <div class="skill-list" id="soft-skills">
+        <div class="skill-item">
+          <span class="skill-name">Communication <span>95%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Leadership <span>80%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Critical Thinking <span>88%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Teamwork &amp; Collaboration <span>93%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="93"></div></div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-name">Working Under Pressure <span>90%</span></span>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+        </div>
+      </div>
+      <p class="skill-group-title" style="margin-top:2rem;">Languages</p>
+      <div class="lang-tags">
+        <span class="lang-tag">English — Fluent</span>
+        <span class="lang-tag">Hindi — Native</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <p class="section-eyebrow">Let's Connect</p>
+      <h2 class="section-title">Get in <em>touch</em></h2>
+      <p class="contact-intro">
+        Open to clinical opportunities, medical device roles, and collaborations in eye care. Feel free to reach out — I'd love to connect.
+      </p>
+      <div class="contact-details">
+        <div class="contact-line">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.24 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.27 6.27l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          +91 9xxxxxxxx4
+        </div>
+        <div class="contact-line">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          abhishristhi8857@gmail.com
+        </div>
+        <div class="contact-line">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          Meerut, Uttar Pradesh — 250004
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Your name"/>
+          </div>
+          <div class="form-field">
+            <label for="femail">Email</label>
+            <input type="email" id="femail" placeholder="your@email.com"/>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="fsubject">Subject</label>
+          <input type="text" id="fsubject" placeholder="How can I help?"/>
+        </div>
+        <div class="form-field">
+          <label for="fmsg">Message</label>
+          <textarea id="fmsg" rows="5" placeholder="Write your message here..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Abhishristhi Rana · Optometrist</div>
+  <p class="footer-note">© 2024 · Meerut, Uttar Pradesh · India</p>
+</footer>
+
+<script>
+  // Skill bar animation on scroll
+  const bars = document.querySelectorAll('.skill-bar-fill');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.style.width = el.dataset.width + '%';
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  bars.forEach(bar => observer.observe(bar));
+
+  // Smooth active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--forest)' : '';
+      a.style.fontWeight = a.getAttribute('href') === '#' + current ? '500' : '';
+    });
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.submit-btn');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = 'var(--forest-light)';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Scroll reveal for cards
+  const revealEls = document.querySelectorAll('.exp-card, .service-card, .about-card, .outreach-item');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = `fadeUp 0.6s ease ${i * 0.08}s forwards`;
+        entry.target.style.opacity = '0';
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // Add a class fallback for browsers without :has() so the initials are hidden
+  // when an image is present inside the frame.
+  document.querySelectorAll('.portrait-frame').forEach(frame => {
+    if (frame.querySelector('img')) frame.classList.add('has-img');
+  });
+</script>
+</body>
+</html>
